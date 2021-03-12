@@ -52,53 +52,11 @@ class Point
 }
 
 
-//$reflectionClass = new reflectionClass(Circle::class);
-//
-///**
-// * @param $className
-// * @return object
-// * @throws ReflectionException
-// */
-//function make(string $className)
-//{
-//    $reflectionClass = new ReflectionClass($className);
-//    $constructor     = $reflectionClass->getConstructor();
-//    $parameters      = $constructor->getParameters();
-//    $dependencies    = getDependencies($parameters);
-//
-//    return $reflectionClass->newInstanceArgs($dependencies);
-//}
-//
-///**
-// * @param array $parameters
-// * @return array
-// * @throws ReflectionException
-// */
-//function getDependencies(array $parameters)
-//{
-//    $dependencies = [];
-//    foreach ($parameters as $parameter) {
-//        /** @var ReflectionParameter $parameter */
-//        $dependency = $parameter->getClass();
-//        if (is_null($dependency)) {
-//            if ($parameter->isDefaultValueAvailable()) {
-//                $dependencies[] = $parameter->getDefaultValue();
-//            } else {
-//                //to easily implement this function, I just assume 0 to built-in type parameters
-//                $dependencies[] = '0';
-//            }
-//        } else {
-//            $dependencies[] = make($parameter->getClass()->name);
-//        }
-//    }
-//
-//    return $dependencies;
-//}
-//
-
-
 /**
+ * make 制造对象的简易版本
+ *
  * @param $className
+ * @return object
  * @throws ReflectionException
  */
 function make($className)
@@ -121,7 +79,7 @@ function make($className)
     return $ReflectClass->newInstanceArgs($constructParas);
 }
 
-$circle = make('Circle');
+$circle = make(Circle::class);
 $area   = $circle->area();
 
 var_dump($area);
